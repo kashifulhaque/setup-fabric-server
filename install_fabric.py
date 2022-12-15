@@ -15,7 +15,7 @@ else:
     os.system('echo "eula=true" > eula.txt')
 
     sys_mem_mb = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES') / (1024.**2)
-    minecraft_mem = int(0.8 * sys_mem_mb)
+    minecraft_mem = int(0.75 * sys_mem_mb)
 
     with open('start.sh', 'w') as file:
       file.write(f'screen -S minecraft_server java -Xmx{minecraft_mem}M -jar server.jar --nogui')
