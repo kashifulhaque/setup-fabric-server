@@ -1,3 +1,4 @@
 .venv/
 .vscode/
 fabric_server/
+utils/__pycache__
