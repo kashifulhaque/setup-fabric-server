@@ -11,4 +11,4 @@ A simple python script to setup the latest fabric server on Linux
 6. Run the setup `python setup.py`
 7. `cd` into the fabric server directory `cd fabric_server`
 8. Start the server by running `sh start.sh` (Requires `screen` to be installed)
-9. `screen` can be installed on Debian, Ubuntu and other Debian and Ubuntu based OS by running `sudo apt install -y screen`
+9. `screen` can be installed on Debian, Ubuntu and other Debian and Ubuntu based distro by running `sudo apt install -y screen`
