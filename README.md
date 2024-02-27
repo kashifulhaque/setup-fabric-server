@@ -14,7 +14,7 @@ git clone https://github.com/kashifulhaque/setup-fabric-server
 ```bash
 cd setup_fabric_server
 ```
-### Run the Setup Script
+### 3. Run the Setup Script
 Execute the setup.sh file to automate the setup process:
 ```bash
 sh setup.sh
