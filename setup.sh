@@ -2,7 +2,7 @@ python -m venv env
 
 source env/bin/activate
 
-pip install -r requiremnts.txt
+pip install -r requirements.txt
 
 python3 setup.py
 
