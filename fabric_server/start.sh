@@ -1,0 +1,1 @@
+screen -S minecraft_server java -Xmx5380M -jar server.jar --nogui

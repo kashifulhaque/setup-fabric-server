@@ -1,0 +1,40 @@
+[12:47:40] [main/INFO]: Loading Minecraft 1.20.4 with Fabric Loader 0.15.7
+[12:47:40] [main/INFO]: Fabric is preparing JARs on first launch, this may take a few seconds...
+[12:47:40] [main/INFO]: Loading 4 mods:
+	- fabricloader 0.15.7
+	   \-- mixinextras 0.3.5
+	- java 17
+	- minecraft 1.20.4
+[12:47:41] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/home/yash/Desktop/setup-fabric-server/fabric_server/libraries/net/fabricmc/sponge-mixin/0.12.5+mixin.0.8.5/sponge-mixin-0.12.5+mixin.0.8.5.jar Service=Knot/Fabric Env=SERVER
+[12:47:46] [main/ERROR]: Failed to load properties from file: server.properties
+java.nio.file.NoSuchFileException: server.properties
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:92) ~[?:?]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106) ~[?:?]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111) ~[?:?]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:380) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:432) ~[?:?]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:422) ~[?:?]
+	at java.nio.file.Files.newInputStream(Files.java:160) ~[?:?]
+	at net.minecraft.class_3808.method_16727(class_3808.java:62) ~[server-intermediary.jar:?]
+	at net.minecraft.class_3806.method_16714(class_3806.java:138) ~[server-intermediary.jar:?]
+	at net.minecraft.class_3807.<init>(class_3807.java:12) ~[server-intermediary.jar:?]
+	at net.minecraft.server.Main.main(Main.java:112) ~[server-intermediary.jar:?]
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:470) ~[fabric-loader-0.15.7.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:74) ~[fabric-loader-0.15.7.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.KnotServer.main(KnotServer.java:23) ~[fabric-loader-0.15.7.jar:?]
+	at net.fabricmc.loader.impl.launch.server.FabricServerLauncher.main(FabricServerLauncher.java:69) ~[fabric-loader-0.15.7.jar:?]
+[12:47:46] [main/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[12:47:48] [main/INFO]: No existing world data, creating new world
+[12:47:49] [main/INFO]: Loaded 7 recipes
+[12:47:49] [main/INFO]: Loaded 1271 advancements
+[12:47:50] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[12:47:50] [Server thread/INFO]: Loading properties
+[12:47:50] [Server thread/INFO]: Default game type: SURVIVAL
+[12:47:50] [Server thread/INFO]: Generating keypair
+[12:47:50] [Server thread/INFO]: Starting Minecraft server on *:25565
+[12:47:51] [Server thread/INFO]: Using epoll channel type
+[12:47:51] [Server thread/INFO]: Preparing level "world"
+[12:47:55] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[12:47:56] [Worker-Main-2/INFO]: Preparing spawn area: 0%
+[12:47:56] [Worker-Main-2/INFO]: Preparing spawn area: 0%
