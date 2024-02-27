@@ -1,16 +1,17 @@
-# Use Alpine Linux as the base image
-FROM python:3.9-alpine
-
+FROM alpine:latest
 
 WORKDIR /app/
 
-COPY requirements.txt /app/
+# Copy the entire contents of the 'fabric_server' directory into the container
+COPY fabric_server/. /app/
 
-# Install dependencies
-RUN apk update
+# Install Java and screen
+RUN apk update && \
+    apk add openjdk17 && \
+    apk add screen
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Set environment variable for Java home
+ENV JAVA_HOME=/usr/lib/jvm/default-jvm
 
-COPY . /app/
-
-CMD ["python3", "./setup.py"]
+# Specify the command to run when the container starts
+CMD ["sh", "start.sh"]
