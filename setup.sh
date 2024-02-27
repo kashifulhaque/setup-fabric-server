@@ -4,7 +4,9 @@ source env/bin/activate
 
 pip install -r requirements.txt
 
-python3 setup.py
+if [ -f "setup.py" ]; then
+    python3 setup.py
+fi
 
 sudo docker build . -t fabricserver
 
