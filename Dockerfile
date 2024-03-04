@@ -1,32 +1,28 @@
-# Stage 1: Build stage
-FROM python:3.9-alpine AS builder
+FROM ubuntu:latest AS builder
 
 WORKDIR /app/
 
-COPY requirements.txt /app/
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip
 
-RUN apk update && \
-    apk add --no-cache py3-pip && \
-    pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt .
 
-COPY . /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Run setup.py or any other build commands if needed
-CMD ["python","./setup.py"]
+COPY utils/. /app/utils
 
-# Stage 2: Final stage
+CMD ["python3" , "setup.py"]
+
 FROM alpine:latest
 
 WORKDIR /app/
 
-COPY --from=builder /app/fabric_server/. ./
-COPY fabric_server/. /app/
+COPY --from=builder /app/fabric_server/ /app/fabric_server/
 
-# Install Java, screen, and any other required packages
 RUN apk update && \
     apk add openjdk17 && \
     apk add screen
 
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
-# Set the command to start the Minecraft server using screen
+
 CMD ["sh", "start.sh"]
