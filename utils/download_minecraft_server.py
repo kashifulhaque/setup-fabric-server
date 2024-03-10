@@ -13,7 +13,7 @@ multiplier = 0.7
 
 def get_latest_release(url):
     try:
-        http_req = Request(url, headers = {"Accept": "application/json"})
+        http_req = Request(url, headers={"Accept": "application/json"})
         with urlopen(http_req) as data:
             data = json.loads(data.read().decode())
     except ConnectionError as e:
@@ -22,19 +22,19 @@ def get_latest_release(url):
     
     return data["latest"]["release"]
 
-def print_releases(releases, start_idx, end_idx):
-    print("Releases:")
-    for i, release in enumerate(releases[start_idx : end_idx], start = start_idx):
-        print(f"{i + 1}. {release}")
-
 def download_server_jar(url, server_dir, installer_jar):
     latest_release = get_latest_release(url)
-    print(Fore.GREEN + f"Download Minecraft v{latest_release}" + Style.RESET_ALL)
+    print(Fore.GREEN + f"Downloading Minecraft v{latest_release}" + Style.RESET_ALL)
 
     os.chdir(server_dir)
     server_command = f"java -jar {installer_jar} server -mcversion {latest_release} -downloadMinecraft"
-    result = subprocess.getoutput(server_command)
-    output_lines = result.splitlines()
+    try:
+        result = subprocess.check_output(server_command, shell=True, stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        print(Fore.RED + f"An error occurred while executing server command: {e.output.decode()}" + Style.RESET_ALL)
+        return
+
+    output_lines = result.decode().splitlines()
     for line in output_lines[:-1]:
         print(line)
     
@@ -58,4 +58,4 @@ def download_server_jar(url, server_dir, installer_jar):
         file.write(f"screen -S minecraft_server java -Xmx{minecraft_mem}M -jar server.jar --nogui")
     
     os.system("chmod +x start.sh")
-    print(Fore.GREEN + f"Run {server_dir}/start.sh" + Style.RESET_ALL)
+    print(Fore.GREEN + f"To start the server, run: {os.path.join(server_dir, 'start.sh')}" + Style.RESET_ALL)
