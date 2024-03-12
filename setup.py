@@ -8,14 +8,23 @@ server_dir = "fabric_server"
 fabric_installer_url = "https://meta.fabricmc.net/v2/versions/installer"
 minecraft_versions_api = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
-print(Fore.CYAN + " --------------------------------------------------------------------------------" + Style.RESET_ALL)
-print(Fore.CYAN + "          A simple script to download the latest Minecraft fabric server         " + Style.RESET_ALL)
-print(Fore.CYAN + " --------------------------------------------------------------------------------" + Style.RESET_ALL)
+def main():
+    print(Fore.CYAN + " --------------------------------------------------------------------------------" + Style.RESET_ALL)
+    print(Fore.CYAN + "          A simple script to download the latest Minecraft fabric server         " + Style.RESET_ALL)
+    print(Fore.CYAN + " --------------------------------------------------------------------------------" + Style.RESET_ALL)
 
-if os.path.exists(server_dir):
-    print(Fore.YELLOW + f"{server_dir} directory already exists\nExiting ..." + Style.RESET_ALL)
-    exit()
+    if os.path.exists(server_dir):
+        print(Fore.YELLOW + f"{server_dir} directory already exists\nExiting ..." + Style.RESET_ALL)
+        return
 
-os.mkdir(server_dir)
-installer_jar = download_fabric(fabric_installer_url, server_dir)
-download_server_jar(minecraft_versions_api, server_dir, installer_jar)
+    os.makedirs(server_dir, exist_ok=True)
+
+    installer_jar = download_fabric(fabric_installer_url, server_dir)
+    if installer_jar is None:
+        print(Fore.RED + "Failed to download Fabric installer. Exiting..." + Style.RESET_ALL)
+        return
+
+    download_server_jar(minecraft_versions_api, server_dir, installer_jar)
+
+if __name__ == "__main__":
+    main()
